@@ -91,7 +91,7 @@ class App extends Component {
                       </tr>
                       <tr>
                         <td>Buffer</td>
-                        <td>Ξ {decimalPlaces(usmEthBuffer)} ETH</td>
+                        <td>Ξ {decimalPlaces(usmEthBuffer)}</td>
                       </tr>
                       <tr>
                         <td>Debt Ratio</td>
