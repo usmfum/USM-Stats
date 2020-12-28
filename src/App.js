@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadNetwork } from './redux/interactions';
 import { chainlinkPriceSelector, coingeckoPriceSelector, compoundPriceSelector, fumBurnsSelector, fumBuyPriceSelector, fumMintsSelector, fumSellPriceSelector, fumSupplySelector, networkProviderSelector, uniswapPriceSelector, usmBurnsSelector, usmBuyPriceSelector, usmCollateralSelector, usmDebtRatioSelector, usmEthBufferSelector, usmMintsSelector, usmSellPriceSelector, usmSupplySelector } from './redux/selectors';
-import { Card, Col, Container, Row, Table } from 'react-bootstrap';
+import { Card, Col, Container, Row, Table, Alert } from 'react-bootstrap';
 
 class App extends Component {
   
@@ -74,6 +74,9 @@ class App extends Component {
       <div className="App">
         <Container>
           <Row className="justify-content-md-center">
+            <Alert variant="warning">
+              <b>Displaying stats for <a href="https://twitter.com/usmfum/status/1339323408618835969" target="_blank" rel="noreferrer">Baby-USM.</a></b> This does not represent the fully live protocol.
+            </Alert>
             <Col sm={6}>
               <Card>
                 <Card.Body>
