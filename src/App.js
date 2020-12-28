@@ -21,7 +21,7 @@ class App extends Component {
     const oracleHighlight = (referencePrice, actualPrice) => {
       const colours = [
         '#00ff44',
-        '#d4ff00',
+        '#aaff00',
         '#fbff00',
         '#ffe100',
         '#ffc400',
@@ -61,9 +61,9 @@ class App extends Component {
       }
     }
 
-    const {dispatch, networkProvider, usmSupply, usmMints, usmBurns, usmMarketCap,
-      usmCollateral, usmDebtRatio, usmEthBuffer, usmBuyPrice, usmSellPrice,
-      fumMarketCap, fumSupply, fumMints, fumBurns, fumBuyPrice, fumSellPrice,
+    const {dispatch, networkProvider, usmSupply, usmMints, usmBurns, usmMarketCap, usmMarketCapUSD,
+      usmCollateral, usmDebtRatio, usmEthBuffer, usmBuyPrice, usmBuyPriceUSD, usmSellPrice, usmSellPriceUSD,
+      fumMarketCap, fumMarketCapUSD, fumSupply, fumMints, fumBurns, fumBuyPrice, fumBuyPriceUSD, fumSellPrice, fumSellPriceUSD,
       chainlinkPrice, compoundPrice, uniswapPrice, coingeckoPrice, medianPrice} = this.props;
     
     if (!networkProvider) {
@@ -87,11 +87,11 @@ class App extends Component {
                     <tbody>
                       <tr>
                         <td>Total Collateral</td>
-                        <td>{decimalPlaces(usmCollateral)} ETH</td>
+                        <td>Ξ {decimalPlaces(usmCollateral)}</td>
                       </tr>
                       <tr>
                         <td>Buffer</td>
-                        <td>{decimalPlaces(usmEthBuffer)} ETH</td>
+                        <td>Ξ {decimalPlaces(usmEthBuffer)} ETH</td>
                       </tr>
                       <tr>
                         <td>Debt Ratio</td>
@@ -114,7 +114,11 @@ class App extends Component {
                     <tbody>
                       <tr>
                         <td>Market Cap (ETH)</td>
-                        <td>{decimalPlaces(usmMarketCap)}</td>
+                        <td>Ξ {decimalPlaces(usmMarketCap)}</td>
+                      </tr>
+                      <tr>
+                        <td>Market Cap (USD)</td>
+                        <td>$ {decimalPlaces(usmMarketCapUSD)}</td>
                       </tr>
                       <tr>
                         <td>Total Supply</td>
@@ -122,11 +126,19 @@ class App extends Component {
                       </tr>
                       <tr>
                         <td>Buy Price (ETH)</td>
-                        <td>{decimalPlaces(usmBuyPrice, 5)}</td>
+                        <td>Ξ {decimalPlaces(usmBuyPrice, 5)}</td>
+                      </tr>
+                      <tr>
+                        <td>Buy Price (USD)</td>
+                        <td>$ {decimalPlaces(usmBuyPriceUSD)}</td>
                       </tr>
                       <tr>
                         <td>Sell Price (ETH)</td>
-                        <td>{decimalPlaces(usmSellPrice, 5)}</td>
+                        <td>Ξ {decimalPlaces(usmSellPrice, 5)}</td>
+                      </tr>
+                      <tr>
+                        <td>Sell Price (USD)</td>
+                        <td>$ {decimalPlaces(usmSellPriceUSD)}</td>
                       </tr>
                       <tr>
                         <td>No. of Mints</td>
@@ -151,7 +163,11 @@ class App extends Component {
                     <tbody>
                       <tr>
                         <td>Market Cap (ETH)</td>
-                        <td>{decimalPlaces(fumMarketCap)}</td>
+                        <td>Ξ {decimalPlaces(fumMarketCap)}</td>
+                      </tr>
+                      <tr>
+                        <td>Market Cap (USD)</td>
+                        <td>$ {decimalPlaces(fumMarketCapUSD)}</td>
                       </tr>
                       <tr>
                         <td>Total Supply</td>
@@ -159,11 +175,19 @@ class App extends Component {
                       </tr>
                       <tr>
                         <td>Buy Price (ETH)</td>
-                        <td>{decimalPlaces(fumBuyPrice, 5)}</td>
+                        <td>Ξ {decimalPlaces(fumBuyPrice, 5)}</td>
+                      </tr>
+                      <tr>
+                        <td>Buy Price (USD)</td>
+                        <td>$ {decimalPlaces(fumBuyPriceUSD)}</td>
                       </tr>
                       <tr>
                         <td>Sell Price (ETH)</td>
-                        <td>{decimalPlaces(fumSellPrice, 5)}</td>
+                        <td>Ξ {decimalPlaces(fumSellPrice, 5)}</td>
+                      </tr>
+                      <tr>
+                        <td>Sell Price (USD)</td>
+                        <td>$ {decimalPlaces(fumSellPriceUSD)}</td>
                       </tr>
                       <tr>
                         <td>No. of Mints</td>
@@ -190,30 +214,30 @@ class App extends Component {
                         <th colSpan={2}>Off Chain Reference (not used)</th>
                       </tr>
                       <tr>
-                        <td>Coingecko - ETH (in USD)</td>
-                        <td>{decimalPlaces(coingeckoPrice)}</td>
+                        <td>Coingecko - ETH</td>
+                        <td>$ {decimalPlaces(coingeckoPrice)}</td>
                       </tr>
                       <tr>
                         <th colSpan={2}>USMFUM ETH Price</th>
                       </tr>
                       <tr style={{backgroundColor: oracleHighlight(coingeckoPrice, medianPrice)}}>
                         <td>Medianized Oracle</td>
-                        <td>{decimalPlaces(medianPrice)}</td>
+                        <td>$ {decimalPlaces(medianPrice)}</td>
                       </tr>
                       <tr>
                         <th colSpan={2}>Median Sources</th>
                       </tr>
                       <tr style={{backgroundColor: oracleHighlight(coingeckoPrice, chainlinkPrice)}}>
                         <td>Chainlink</td>
-                        <td>{decimalPlaces(chainlinkPrice)}</td>
+                        <td>$ {decimalPlaces(chainlinkPrice)}</td>
                       </tr>
                       <tr style={{backgroundColor: oracleHighlight(coingeckoPrice, compoundPrice)}}>
                         <td>Compound</td>
-                        <td>{decimalPlaces(compoundPrice)}</td>
+                        <td>$ {decimalPlaces(compoundPrice)}</td>
                       </tr>
                       <tr style={{backgroundColor: oracleHighlight(coingeckoPrice, uniswapPrice)}}>
                         <td>Uniswap TWAP</td>
-                        <td>{decimalPlaces(uniswapPrice)}</td>
+                        <td>$ {decimalPlaces(uniswapPrice)}</td>
                       </tr>
                     </tbody>
                   </Table>
@@ -227,17 +251,34 @@ class App extends Component {
   }
 }
 
+function stringMul(a, b) {
+  return (Number.parseFloat(a) * Number.parseFloat(b))
+}
+
 function mapStateToProps(state) {
+  const coingeckoPrice = coingeckoPriceSelector(state)
+
   const usmSupply = usmSupplySelector(state)
   const usmBuyPrice = usmBuyPriceSelector(state)
+  const usmSellPrice = usmSellPriceSelector(state)
   const usmMarketCap = usmSupply * usmBuyPrice
 
   const fumSupply = fumSupplySelector(state)
   const fumBuyPrice = fumBuyPriceSelector(state)
+  const fumSellPrice = fumSellPriceSelector(state)
   const fumMarketCap = fumSupply * fumBuyPrice
+
+  const usmBuyPriceUSD = stringMul(usmBuyPrice, coingeckoPrice)
+  const usmSellPriceUSD = stringMul(usmSellPrice, coingeckoPrice)
+  const usmMarketCapUSD = stringMul(usmMarketCap, coingeckoPrice)
+  const fumBuyPriceUSD = stringMul(fumBuyPrice, coingeckoPrice)
+  const fumSellPriceUSD = stringMul(fumSellPrice, coingeckoPrice)
+  const fumMarketCapUSD = stringMul(fumMarketCap, coingeckoPrice)
+
   return {
     networkProvider: networkProviderSelector(state),
     usmMarketCap,
+    usmMarketCapUSD,
     usmSupply,
     usmMints: usmMintsSelector(state),
     usmBurns: usmBurnsSelector(state),
@@ -245,17 +286,22 @@ function mapStateToProps(state) {
     usmDebtRatio: usmDebtRatioSelector(state),
     usmEthBuffer: usmEthBufferSelector(state),
     usmBuyPrice,
-    usmSellPrice: usmSellPriceSelector(state),
+    usmBuyPriceUSD,
+    usmSellPrice,
+    usmSellPriceUSD,
     fumMarketCap,
+    fumMarketCapUSD,
     fumSupply,
     fumMints: fumMintsSelector(state),
     fumBurns: fumBurnsSelector(state),
     fumBuyPrice,
-    fumSellPrice: fumSellPriceSelector(state),
+    fumBuyPriceUSD,
+    fumSellPrice,
+    fumSellPriceUSD,
     chainlinkPrice: chainlinkPriceSelector(state),
     compoundPrice: compoundPriceSelector(state),
     uniswapPrice: uniswapPriceSelector(state),
-    coingeckoPrice: coingeckoPriceSelector(state),
+    coingeckoPrice,
     medianPrice: medianPriceSelector(state)
   }
 }
