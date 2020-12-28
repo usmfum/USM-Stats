@@ -1,4 +1,4 @@
-import { chainlink, compound, uniswap } from "../oracles";
+import { chainlink, coingecko, compound, uniswap } from "../oracles";
 import { fum, usm } from "../tokens";
 
 export function networkLoaded(provider){
@@ -37,6 +37,11 @@ export function setLatestOraclePrice(source, price) {
     case uniswap:
       return {
         type: 'ORACLE_PRICE_UNISWAP',
+        price
+      }
+    case coingecko:
+      return {
+        type: 'ORACLE_PRICE_COINGECKO',
         price
       }
     default:

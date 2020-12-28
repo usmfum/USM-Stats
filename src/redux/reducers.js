@@ -57,6 +57,8 @@ function oracle(state = {}, action) {
       return { ...state, compoundPrice: action.price }
     case 'ORACLE_PRICE_UNISWAP':
       return { ...state, uniswapPrice: action.price }
+    case 'ORACLE_PRICE_COINGECKO':
+      return { ...state, coingeckoPrice: action.price }
     default:
       return state;
   }

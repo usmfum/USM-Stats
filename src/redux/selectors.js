@@ -58,3 +58,6 @@ export const compoundPriceSelector = createSelector(compoundPrice, w => w);
 
 const uniswapPrice = state => get(state, 'oracle.uniswapPrice', 0);
 export const uniswapPriceSelector = createSelector(uniswapPrice, w => w);
+
+const coingeckoPrice = state => get(state, 'oracle.coingeckoPrice', 0);
+export const coingeckoPriceSelector = createSelector(coingeckoPrice, w => w);

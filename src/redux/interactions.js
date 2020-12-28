@@ -29,6 +29,5 @@ export const loadFUM = async (dispatch, provider) => {
   const address = fum.address[network.chainId]
   const fumContract = new ethers.Contract(address, abi, provider)
   dispatch(fumLoaded(fumContract))
-  console.log(abi, address, fumContract)
   loadERC20Data(dispatch, fum, fumContract)
 }
