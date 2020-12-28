@@ -1,3 +1,4 @@
+import { chainlink, compound, uniswap } from "../oracles";
 import { fum, usm } from "../tokens";
 
 export function networkLoaded(provider){
@@ -18,6 +19,28 @@ export function fumLoaded(fum) {
   return {
     type: 'FUM_LOADED',
     fum
+  }
+}
+
+export function setLatestOraclePrice(source, price) {
+  switch (source) {
+    case chainlink:
+      return {
+        type: 'ORACLE_PRICE_CHAINLINK',
+        price
+      }
+    case compound:
+      return {
+        type: 'ORACLE_PRICE_COMPOUND',
+        price
+      }
+    case uniswap:
+      return {
+        type: 'ORACLE_PRICE_UNISWAP',
+        price
+      }
+    default:
+      break;
   }
 }
 

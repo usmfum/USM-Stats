@@ -48,3 +48,13 @@ export const fumBuyPriceSelector = createSelector(fumBuyPrice, w => w);
 
 const fumSellPrice = state => get(state, 'fum.sellPrice', 0);
 export const fumSellPriceSelector = createSelector(fumSellPrice, w => w);
+
+//ORACLE
+const chainlinkPrice = state => get(state, 'oracle.chainlinkPrice', 0);
+export const chainlinkPriceSelector = createSelector(chainlinkPrice, w => w);
+
+const compoundPrice = state => get(state, 'oracle.compoundPrice', 0);
+export const compoundPriceSelector = createSelector(compoundPrice, w => w);
+
+const uniswapPrice = state => get(state, 'oracle.uniswapPrice', 0);
+export const uniswapPriceSelector = createSelector(uniswapPrice, w => w);

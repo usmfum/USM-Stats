@@ -49,8 +49,21 @@ function fum(state = {}, action) {
   }
 }
 
+function oracle(state = {}, action) {
+  switch (action.type) {
+    case 'ORACLE_PRICE_CHAINLINK':
+      return { ...state, chainlinkPrice: action.price }
+    case 'ORACLE_PRICE_COMPOUND':
+      return { ...state, compoundPrice: action.price }
+    case 'ORACLE_PRICE_UNISWAP':
+      return { ...state, uniswapPrice: action.price }
+    default:
+      return state;
+  }
+}
+
 const rootReducer = new combineReducers({
-  app, usm, fum
+  app, usm, fum, oracle
 });
 
 export default rootReducer;

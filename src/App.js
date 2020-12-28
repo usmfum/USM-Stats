@@ -2,11 +2,10 @@ import './App.scss';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadNetwork } from './redux/interactions';
-import { fumBurnsSelector, fumBuyPriceSelector, fumMintsSelector, fumSellPriceSelector, fumSupplySelector, networkProviderSelector, usmBurnsSelector, usmBuyPriceSelector, usmCollateralSelector, usmDebtRatioSelector, usmEthBufferSelector, usmMintsSelector, usmSellPriceSelector, usmSupplySelector } from './redux/selectors';
+import { chainlinkPriceSelector, compoundPriceSelector, fumBurnsSelector, fumBuyPriceSelector, fumMintsSelector, fumSellPriceSelector, fumSupplySelector, networkProviderSelector, uniswapPriceSelector, usmBurnsSelector, usmBuyPriceSelector, usmCollateralSelector, usmDebtRatioSelector, usmEthBufferSelector, usmMintsSelector, usmSellPriceSelector, usmSupplySelector } from './redux/selectors';
 import { Card, Col, Container, Row, Table } from 'react-bootstrap';
 
 class App extends Component {
-
   
   render() {
 
@@ -21,7 +20,9 @@ class App extends Component {
 
     const {dispatch, networkProvider, usmSupply, usmMints, usmBurns, usmMarketCap,
       usmCollateral, usmDebtRatio, usmEthBuffer, usmBuyPrice, usmSellPrice,
-      fumMarketCap, fumSupply, fumMints, fumBurns, fumBuyPrice, fumSellPrice} = this.props;
+      fumMarketCap, fumSupply, fumMints, fumBurns, fumBuyPrice, fumSellPrice,
+      chainlinkPrice, compoundPrice, uniswapPrice} = this.props;
+    
     if (!networkProvider) {
       loadNetwork(dispatch);
     }
@@ -30,7 +31,7 @@ class App extends Component {
       <div className="App">
         <Container>
           <Row className="justify-content-md-center">
-            <Col xs={6}>
+            <Col sm={6}>
               <Card>
                 <Card.Body>
                   <Card.Title>
@@ -137,7 +138,22 @@ class App extends Component {
                   <Card.Title>
                     Oracle Stats
                   </Card.Title>
-                  
+                  <Table size="sm">
+                    <tbody>
+                      <tr>
+                        <td>ETH Price - Chainlink</td>
+                        <td>{decimalPlaces(chainlinkPrice)}</td>
+                      </tr>
+                      <tr>
+                        <td>ETH Price - Compound</td>
+                        <td>{decimalPlaces(compoundPrice)}</td>
+                      </tr>
+                      <tr>
+                        <td>ETH Price - Uniswap TWAP</td>
+                        <td>{decimalPlaces(uniswapPrice)}</td>
+                      </tr>
+                    </tbody>
+                  </Table>
                 </Card.Body>
               </Card>
             </Col>
@@ -172,7 +188,10 @@ function mapStateToProps(state) {
     fumMints: fumMintsSelector(state),
     fumBurns: fumBurnsSelector(state),
     fumBuyPrice,
-    fumSellPrice: fumSellPriceSelector(state)
+    fumSellPrice: fumSellPriceSelector(state),
+    chainlinkPrice: chainlinkPriceSelector(state),
+    compoundPrice: compoundPriceSelector(state),
+    uniswapPrice: uniswapPriceSelector(state)
   }
 }
 

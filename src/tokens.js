@@ -15,6 +15,11 @@ export const usm = {
     "function debtRatio() external view returns (uint ratio)",
     "function usmPrice(uint8 side) external view returns (uint price)",
     "function fumPrice(uint8 side) external view returns (uint price)",
+    "function latestChainlinkPrice() public view returns (uint price)",
+    "function latestCompoundPrice() public view returns (uint price)",
+    "function latestUniswapTWAPPrice() public view returns (uint price)",
+    "function latestPrice() public virtual view returns (uint price)",
+    
     "event MinFumBuyPriceChanged(uint previous, uint latest)",
     "event BuySellAdjustmentChanged(uint previous, uint latest)",
   

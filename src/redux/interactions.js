@@ -3,6 +3,7 @@ import { fum, usm } from "../tokens"
 import { fumLoaded, networkLoaded, usmLoaded } from "./actions"
 import { loadCollateralData } from "./interactions/cdp"
 import { loadERC20Data } from "./interactions/erc20"
+import { loadOracleData } from "./interactions/oracles"
 
 export const loadNetwork = async (dispatch) => {
   const provider = new ethers.providers.JsonRpcProvider("https://mainnet.infura.io/v3/1be1f8b7b85a47e4949bc1057660a81d")
@@ -19,6 +20,7 @@ export const loadUSM = async (dispatch, provider) => {
   dispatch(usmLoaded(usmContract))
   loadERC20Data(dispatch, usm, usmContract)
   loadCollateralData(dispatch, usmContract)
+  loadOracleData(dispatch, usmContract)
 }
 
 export const loadFUM = async (dispatch, provider) => {
