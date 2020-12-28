@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/USM-Stats/static/css/main.0d61b378.chunk.css",
-    "main.js": "/USM-Stats/static/js/main.7e5d8204.chunk.js",
-    "main.js.map": "/USM-Stats/static/js/main.7e5d8204.chunk.js.map",
+    "main.js": "/USM-Stats/static/js/main.db1bd699.chunk.js",
+    "main.js.map": "/USM-Stats/static/js/main.db1bd699.chunk.js.map",
     "runtime-main.js": "/USM-Stats/static/js/runtime-main.ba853704.js",
     "runtime-main.js.map": "/USM-Stats/static/js/runtime-main.ba853704.js.map",
-    "static/js/2.e5da6c69.chunk.js": "/USM-Stats/static/js/2.e5da6c69.chunk.js",
-    "static/js/2.e5da6c69.chunk.js.map": "/USM-Stats/static/js/2.e5da6c69.chunk.js.map",
+    "static/js/2.46184ded.chunk.js": "/USM-Stats/static/js/2.46184ded.chunk.js",
+    "static/js/2.46184ded.chunk.js.map": "/USM-Stats/static/js/2.46184ded.chunk.js.map",
     "index.html": "/USM-Stats/index.html",
     "static/css/main.0d61b378.chunk.css.map": "/USM-Stats/static/css/main.0d61b378.chunk.css.map",
-    "static/js/2.e5da6c69.chunk.js.LICENSE.txt": "/USM-Stats/static/js/2.e5da6c69.chunk.js.LICENSE.txt"
+    "static/js/2.46184ded.chunk.js.LICENSE.txt": "/USM-Stats/static/js/2.46184ded.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ba853704.js",
-    "static/js/2.e5da6c69.chunk.js",
+    "static/js/2.46184ded.chunk.js",
     "static/css/main.0d61b378.chunk.css",
-    "static/js/main.7e5d8204.chunk.js"
+    "static/js/main.db1bd699.chunk.js"
   ]
 }
