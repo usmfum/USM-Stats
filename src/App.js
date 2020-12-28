@@ -19,9 +19,9 @@ class App extends Component {
       return decimalPlaces(num.toString())
     }
 
-    const {dispatch, networkProvider, usmSupply, usmMints, usmBurns,
+    const {dispatch, networkProvider, usmSupply, usmMints, usmBurns, usmMarketCap,
       usmCollateral, usmDebtRatio, usmEthBuffer, usmBuyPrice, usmSellPrice,
-      fumSupply, fumMints, fumBurns, fumBuyPrice, fumSellPrice} = this.props;
+      fumMarketCap, fumSupply, fumMints, fumBurns, fumBuyPrice, fumSellPrice} = this.props;
     if (!networkProvider) {
       loadNetwork(dispatch);
     }
@@ -66,6 +66,10 @@ class App extends Component {
                   <Table size="sm">
                     <tbody>
                       <tr>
+                        <td>Market Cap (ETH)</td>
+                        <td>{decimalPlaces(usmMarketCap)}</td>
+                      </tr>
+                      <tr>
                         <td>Total Supply</td>
                         <td>{decimalPlaces(usmSupply)}</td>
                       </tr>
@@ -98,6 +102,10 @@ class App extends Component {
                   </Card.Title>
                   <Table size="sm">
                     <tbody>
+                      <tr>
+                        <td>Market Cap (ETH)</td>
+                        <td>{decimalPlaces(fumMarketCap)}</td>
+                      </tr>
                       <tr>
                         <td>Total Supply</td>
                         <td>{decimalPlaces(fumSupply)}</td>
@@ -141,20 +149,29 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
+  const usmSupply = usmSupplySelector(state)
+  const usmBuyPrice = usmBuyPriceSelector(state)
+  const usmMarketCap = usmSupply * usmBuyPrice
+
+  const fumSupply = fumSupplySelector(state)
+  const fumBuyPrice = fumBuyPriceSelector(state)
+  const fumMarketCap = fumSupply * fumBuyPrice
   return {
     networkProvider: networkProviderSelector(state),
-    usmSupply: usmSupplySelector(state),
+    usmMarketCap,
+    usmSupply,
     usmMints: usmMintsSelector(state),
     usmBurns: usmBurnsSelector(state),
     usmCollateral: usmCollateralSelector(state),
     usmDebtRatio: usmDebtRatioSelector(state),
     usmEthBuffer: usmEthBufferSelector(state),
-    usmBuyPrice: usmBuyPriceSelector(state),
+    usmBuyPrice,
     usmSellPrice: usmSellPriceSelector(state),
-    fumSupply: fumSupplySelector(state),
+    fumMarketCap,
+    fumSupply,
     fumMints: fumMintsSelector(state),
     fumBurns: fumBurnsSelector(state),
-    fumBuyPrice: fumBuyPriceSelector(state),
+    fumBuyPrice,
     fumSellPrice: fumSellPriceSelector(state)
   }
 }
