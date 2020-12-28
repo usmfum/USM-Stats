@@ -1,13 +1,14 @@
 import { ethers } from "ethers"
-import { chainlink, coingecko, compound, uniswap } from "../../oracles"
+import { chainlink, coingecko, compound, median, uniswap } from "../../oracles"
 import { setLatestOraclePrice } from "../actions"
 import axios from 'axios'
 
 export const loadOracleData = async (dispatch, contract) => {
+  getCoingeckoPrice(dispatch)
   getChainlinkPrice(dispatch, contract)
   getCompoundPrice(dispatch, contract)
   getUniswapPrice(dispatch, contract)
-  getCoingeckoPrice(dispatch)
+  getMedianPrice(dispatch, contract)
 }
 
 export const getCoingeckoPrice = async (dispatch) => {
@@ -36,4 +37,10 @@ export const getUniswapPrice = async (dispatch, contract) => {
   const price = await contract.latestUniswapTWAPPrice()
   const formattedPrice = ethers.utils.formatEther(price)
   dispatch(setLatestOraclePrice(uniswap, formattedPrice))
+}
+
+export const getMedianPrice = async (dispatch, contract) => {
+  const price = await contract.latestPrice()
+  const formattedPrice = ethers.utils.formatEther(price)
+  dispatch(setLatestOraclePrice(median, formattedPrice))
 }

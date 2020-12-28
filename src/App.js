@@ -2,7 +2,7 @@ import './App.scss';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadNetwork } from './redux/interactions';
-import { chainlinkPriceSelector, coingeckoPriceSelector, compoundPriceSelector, fumBurnsSelector, fumBuyPriceSelector, fumMintsSelector, fumSellPriceSelector, fumSupplySelector, networkProviderSelector, uniswapPriceSelector, usmBurnsSelector, usmBuyPriceSelector, usmCollateralSelector, usmDebtRatioSelector, usmEthBufferSelector, usmMintsSelector, usmSellPriceSelector, usmSupplySelector } from './redux/selectors';
+import { chainlinkPriceSelector, medianPriceSelector, coingeckoPriceSelector, compoundPriceSelector, fumBurnsSelector, fumBuyPriceSelector, fumMintsSelector, fumSellPriceSelector, fumSupplySelector, networkProviderSelector, uniswapPriceSelector, usmBurnsSelector, usmBuyPriceSelector, usmCollateralSelector, usmDebtRatioSelector, usmEthBufferSelector, usmMintsSelector, usmSellPriceSelector, usmSupplySelector } from './redux/selectors';
 import { Card, Col, Container, Row, Table, Alert } from 'react-bootstrap';
 
 class App extends Component {
@@ -64,7 +64,7 @@ class App extends Component {
     const {dispatch, networkProvider, usmSupply, usmMints, usmBurns, usmMarketCap,
       usmCollateral, usmDebtRatio, usmEthBuffer, usmBuyPrice, usmSellPrice,
       fumMarketCap, fumSupply, fumMints, fumBurns, fumBuyPrice, fumSellPrice,
-      chainlinkPrice, compoundPrice, uniswapPrice, coingeckoPrice} = this.props;
+      chainlinkPrice, compoundPrice, uniswapPrice, coingeckoPrice, medianPrice} = this.props;
     
     if (!networkProvider) {
       loadNetwork(dispatch);
@@ -77,7 +77,7 @@ class App extends Component {
             <Alert variant="warning">
               <b>Displaying stats for <a href="https://twitter.com/usmfum/status/1339323408618835969" target="_blank" rel="noreferrer">Baby-USM.</a></b> This does not represent the fully live protocol.
             </Alert>
-            <Col sm={6}>
+            <Col md={6}>
               <Card>
                 <Card.Body>
                   <Card.Title>
@@ -182,7 +182,7 @@ class App extends Component {
             <Card>
                 <Card.Body>
                   <Card.Title>
-                    Oracle Prices (ETH)
+                    Oracle Performance
                   </Card.Title>
                   <Table size="sm">
                     <tbody>
@@ -190,11 +190,18 @@ class App extends Component {
                         <th colSpan={2}>Off Chain Reference (not used)</th>
                       </tr>
                       <tr>
-                        <td>Coingecko</td>
+                        <td>Coingecko - ETH (in USD)</td>
                         <td>{decimalPlaces(coingeckoPrice)}</td>
                       </tr>
                       <tr>
-                        <th colSpan={2}>Reported On-Chain Prices</th>
+                        <th colSpan={2}>USMFUM ETH Price</th>
+                      </tr>
+                      <tr style={{backgroundColor: oracleHighlight(coingeckoPrice, medianPrice)}}>
+                        <td>Medianized Oracle</td>
+                        <td>{decimalPlaces(medianPrice)}</td>
+                      </tr>
+                      <tr>
+                        <th colSpan={2}>Median Sources</th>
                       </tr>
                       <tr style={{backgroundColor: oracleHighlight(coingeckoPrice, chainlinkPrice)}}>
                         <td>Chainlink</td>
@@ -248,7 +255,8 @@ function mapStateToProps(state) {
     chainlinkPrice: chainlinkPriceSelector(state),
     compoundPrice: compoundPriceSelector(state),
     uniswapPrice: uniswapPriceSelector(state),
-    coingeckoPrice: coingeckoPriceSelector(state)
+    coingeckoPrice: coingeckoPriceSelector(state),
+    medianPrice: medianPriceSelector(state)
   }
 }
 
