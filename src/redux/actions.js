@@ -4,3 +4,10 @@ export function networkLoaded(provider){
     provider
   }
 }
+
+export function usmLoaded(usm) {
+  return {
+    type: 'USM_LOADED',
+    usm
+  }
+}
