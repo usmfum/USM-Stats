@@ -1,5 +1,6 @@
 {
-  "name": "usm-stats",
+  "name": "usmfum-stats",
+  "homepage": "https://usmfum.github.io/USM-Stats/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,6 +9,7 @@
     "@testing-library/user-event": "^12.1.10",
     "bootstrap": "^4.5.3",
     "ethers": "^5.0.24",
+    "gh-pages": "^3.1.0",
     "lodash": "^4.17.20",
     "node-sass": "4.14.1",
     "react": "^17.0.1",
@@ -24,6 +26,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
