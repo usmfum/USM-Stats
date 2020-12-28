@@ -1,4 +1,5 @@
 export const usm = {
+  name: 'usm',
   abi: [
     "function mint(address to, uint minUsmOut) external payable returns (uint)",
     "function burn(address from, address payable to, uint usmToBurn, uint minEthOut) external returns (uint)",
@@ -8,12 +9,12 @@ export const usm = {
     "function ethPool() public view returns (uint pool)",
     "function minFumBuyPrice() public view returns (uint mfbp)",
     "function buySellAdjustment() public view returns (uint adjustment)",
-    "function ethBuffer(WadMath.Round upOrDown) external view returns (int buffer)",
-    "function ethToUsm(uint ethAmount, WadMath.Round upOrDown) external view returns (uint usmOut)",
-    "function usmToEth(uint usmAmount, WadMath.Round upOrDown) external view returns (uint ethOut)",
+    "function ethBuffer(uint8 upOrDown) external view returns (int buffer)",
+    "function ethToUsm(uint ethAmount, uint8 upOrDown) external view returns (uint usmOut)",
+    "function usmToEth(uint usmAmount, uint8 upOrDown) external view returns (uint ethOut)",
     "function debtRatio() external view returns (uint ratio)",
-    "function usmPrice(Side side) external view returns (uint price)",
-    "function fumPrice(Side side) external view returns (uint price)",
+    "function usmPrice(uint8 side) external view returns (uint price)",
+    "function fumPrice(uint8 side) external view returns (uint price)",
     "event MinFumBuyPriceChanged(uint previous, uint latest)",
     "event BuySellAdjustmentChanged(uint previous, uint latest)",
   
@@ -27,6 +28,17 @@ export const usm = {
   ],
   address: {
     '1': '0x03eb7Ce2907e202bB70BAE3D7B0C588573d3cECC'
+  }
+}
+
+export const fum = {
+  name: 'fum',
+  abi: [
+    "function totalSupply() external view returns (uint256)",
+    "event Transfer(address indexed from, address indexed to, uint256 value)"
+  ],
+  address: {
+    '1': '0xf04a5D82ff8a801f7d45e9C14CDcf73defF1a394'
   }
 }
 
