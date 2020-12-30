@@ -67,3 +67,7 @@ export const toPercentage = (decimalString) => {
   const num = Number.parseFloat(decimalString) * 100
   return decimalPlaces(num.toString())
 }
+
+export const stringMul = (a, b) => {
+  return (Number.parseFloat(a) * Number.parseFloat(b))
+}
