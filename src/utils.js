@@ -10,35 +10,51 @@ export const colours = [
   '#ff0000'
 ]
 
-export const oracleHighlight = (referencePrice, actualPrice) => {
-  const difference = Math.abs(Number.parseFloat(referencePrice) - Number.parseFloat(actualPrice))
-  if (difference <= 2) {
+export const colorisor = (actualNumber, ranges) => {
+  if (actualNumber <= ranges[0]) {
     return colours[0]
   }
-  else if (difference > 2 && difference <= 4) {
+  else if (actualNumber > ranges[0] && actualNumber <= ranges[1]) {
     return colours[1]
   }
-  else if (difference > 4 && difference <= 6) {
+  else if (actualNumber > ranges[1] && actualNumber <= ranges[2]) {
     return colours[2]
   }
-  else if (difference > 6 && difference <= 8) {
+  else if (actualNumber > ranges[2] && actualNumber <= ranges[3]) {
     return colours[3]
   }
-  else if (difference > 8 && difference <= 10) {
+  else if (actualNumber > ranges[3] && actualNumber <= ranges[4]) {
     return colours[4]
   }
-  else if (difference > 10 && difference <= 12) {
+  else if (actualNumber > ranges[4] && actualNumber <= ranges[5]) {
     return colours[5]
   }
-  else if (difference > 12 && difference <= 14) {
+  else if (actualNumber > ranges[5] && actualNumber <= ranges[6]) {
     return colours[6]
   }
-  else if (difference > 14 && difference <= 20) {
+  else if (actualNumber > ranges[6] && actualNumber <= ranges[7]) {
     return colours[7]
   }
-  else if (difference > 20) {
+  else if (actualNumber > ranges[7]) {
     return colours[8]
   }
+}
+
+export const usmPriceHighlight = (price) => {
+  const difference = Math.abs(1.00 - Number.parseFloat(price))
+  const ranges = [.01, .02, .03, .04, .05, .06, .07, .08]
+  return colorisor(difference, ranges)
+}
+
+export const debtRatioHighlight = (debtRatio) => {
+  const ranges = [.5, .6, .65, .7, .725, .75, .775, .8]
+  return colorisor(debtRatio, ranges)
+}
+
+export const oracleHighlight = (referencePrice, actualPrice) => {
+  const difference = Math.abs(Number.parseFloat(referencePrice) - Number.parseFloat(actualPrice))
+  const ranges = [2, 4, 6, 8, 10, 12, 14, 20]
+  return colorisor(difference, ranges)
 }
 
 export const decimalPlaces = (numberString, decimals = 2) => {

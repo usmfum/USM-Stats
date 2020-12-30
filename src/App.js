@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { loadNetwork } from './redux/interactions';
 import { chainlinkPriceSelector, medianPriceSelector, coingeckoPriceSelector, compoundPriceSelector, fumBurnsSelector, fumBuyPriceSelector, fumMintsSelector, fumSellPriceSelector, fumSupplySelector, networkProviderSelector, uniswapPriceSelector, usmBurnsSelector, usmBuyPriceSelector, usmCollateralSelector, usmDebtRatioSelector, usmEthBufferSelector, usmMintsSelector, usmSellPriceSelector, usmSupplySelector } from './redux/selectors';
 import { Card, Col, Container, Row, Table, Alert } from 'react-bootstrap';
-import { decimalPlaces, oracleHighlight, toPercentage } from './utils';
+import { debtRatioHighlight, decimalPlaces, oracleHighlight, toPercentage, usmPriceHighlight } from './utils';
 
 class App extends Component {
 
@@ -44,7 +44,7 @@ class App extends Component {
                         <td>Ξ {decimalPlaces(usmEthBuffer)}</td>
                         <td>$ {decimalPlaces(usmEthBufferUSD)}</td>
                       </tr>
-                      <tr>
+                      <tr style={{backgroundColor: debtRatioHighlight(usmDebtRatio)}}>
                         <td>Debt Ratio</td>
                         <td></td>
                         <td>{toPercentage(usmDebtRatio)} %</td>
@@ -111,12 +111,12 @@ class App extends Component {
                         <td>Ξ {decimalPlaces(usmMarketCap)}</td>
                         <td>$ {decimalPlaces(usmMarketCapUSD)}</td>
                       </tr>
-                      <tr>
+                      <tr style={{backgroundColor: usmPriceHighlight(usmBuyPriceUSD)}}>
                         <td>Buy Price</td>
                         <td>Ξ {decimalPlaces(usmBuyPrice, 5)}</td>
                         <td>$ {decimalPlaces(usmBuyPriceUSD)}</td>
                       </tr>
-                      <tr>
+                      <tr style={{backgroundColor: usmPriceHighlight(usmSellPriceUSD)}}>
                         <td>Sell Price</td>
                         <td>Ξ {decimalPlaces(usmSellPrice, 5)}</td>
                         <td>$ {decimalPlaces(usmSellPriceUSD)}</td>
