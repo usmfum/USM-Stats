@@ -30,7 +30,7 @@ class FUMCard extends Component {
                 <td>$ {decimalPlaces(fumBuyPriceUSD)}</td>
               </tr>
               <tr>
-                <td>Burn Price (ETH)</td>
+                <td>Burn Price</td>
                 <td>Ξ {decimalPlaces(fumSellPrice, 5)}</td>
                 <td>$ {decimalPlaces(fumSellPriceUSD)}</td>
               </tr>
