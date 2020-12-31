@@ -46,4 +46,3 @@ export const fum = {
     '1': '0xf04a5D82ff8a801f7d45e9C14CDcf73defF1a394'
   }
 }
-
