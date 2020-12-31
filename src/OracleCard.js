@@ -27,22 +27,22 @@ class OracleCard extends Component {
               <tr>
                 <th colSpan={2}>USMFUM ETH Price</th>
               </tr>
-              <tr style={{backgroundColor: oracleHighlight(coingeckoPrice, medianPrice)}}>
+              <tr className="text-dark" style={{backgroundColor: oracleHighlight(coingeckoPrice, medianPrice)}}>
                 <td>Medianized Oracle</td>
                 <td>$ {decimalPlaces(medianPrice)}</td>
               </tr>
               <tr>
                 <th colSpan={2}>Median Sources</th>
               </tr>
-              <tr style={{backgroundColor: oracleHighlight(coingeckoPrice, chainlinkPrice)}}>
+              <tr className="text-dark" style={{backgroundColor: oracleHighlight(coingeckoPrice, chainlinkPrice)}}>
                 <td>Chainlink</td>
                 <td>$ {decimalPlaces(chainlinkPrice)}</td>
               </tr>
-              <tr style={{backgroundColor: oracleHighlight(coingeckoPrice, compoundPrice)}}>
+              <tr className="text-dark" style={{backgroundColor: oracleHighlight(coingeckoPrice, compoundPrice)}}>
                 <td>Compound</td>
                 <td>$ {decimalPlaces(compoundPrice)}</td>
               </tr>
-              <tr style={{backgroundColor: oracleHighlight(coingeckoPrice, uniswapPrice)}}>
+              <tr className="text-dark" style={{backgroundColor: oracleHighlight(coingeckoPrice, uniswapPrice)}}>
                 <td>Uniswap TWAP</td>
                 <td>$ {decimalPlaces(uniswapPrice)}</td>
               </tr>

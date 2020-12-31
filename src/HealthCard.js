@@ -27,7 +27,7 @@ class HealthCard extends Component {
                 <td>Ξ {decimalPlaces(usmEthBuffer)}</td>
                 <td>$ {decimalPlaces(usmEthBufferUSD)}</td>
               </tr>
-              <tr style={{backgroundColor: debtRatioHighlight(usmDebtRatio)}}>
+              <tr className="text-dark" style={{backgroundColor: debtRatioHighlight(usmDebtRatio)}}>
                 <td>Debt Ratio</td>
                 <td></td>
                 <td>{toPercentage(usmDebtRatio)} %</td>

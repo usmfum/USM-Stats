@@ -22,13 +22,13 @@ class USMCard extends Component {
                 <td>Ξ {decimalPlaces(usmMarketCap)}</td>
                 <td>$ {decimalPlaces(usmMarketCapUSD)}</td>
               </tr>
-              <tr style={{backgroundColor: usmPriceHighlight(usmBuyPriceUSD)}}>
-                <td>Buy Price</td>
+              <tr className="text-dark" style={{backgroundColor: usmPriceHighlight(usmBuyPriceUSD)}}>
+                <td>Mint Price</td>
                 <td>Ξ {decimalPlaces(usmBuyPrice, 5)}</td>
                 <td>$ {decimalPlaces(usmBuyPriceUSD)}</td>
               </tr>
-              <tr style={{backgroundColor: usmPriceHighlight(usmSellPriceUSD)}}>
-                <td>Sell Price</td>
+              <tr className="text-dark" style={{backgroundColor: usmPriceHighlight(usmSellPriceUSD)}}>
+                <td>Burn Price</td>
                 <td>Ξ {decimalPlaces(usmSellPrice, 5)}</td>
                 <td>$ {decimalPlaces(usmSellPriceUSD)}</td>
               </tr>
