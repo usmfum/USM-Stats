@@ -13,7 +13,7 @@ function printButtons(metamaskConnected, buy, sell, connect, inputChange) {
       <>
         <Button onClick={sell} variant="warning" size="sm" className="float-right ml-1">Burn (USM)</Button>
         <Button onClick={buy} variant="success" size="sm" className="float-right ml-1">Mint (ETH)</Button>
-        <input onChange={inputChange} placeholder="Amount" type="number" size="sm" className="float-right ml-1"></input>
+        <input className="form-control" style={{width: 100}} onChange={inputChange} placeholder="Amount" type="number" size="sm" className="float-right ml-1"></input>
       </>
     )
   }

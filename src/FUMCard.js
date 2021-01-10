@@ -1,20 +1,56 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { coingeckoPriceSelector, fumBurnsSelector, fumBuyPriceSelector, fumMintsSelector, fumSellPriceSelector, fumSupplySelector } from './redux/selectors';
-import { Card, Table } from 'react-bootstrap';
+import { coingeckoPriceSelector, fumBurnsSelector, fumBuyPriceSelector, fumInputAmountSelector, fumMintsSelector, fumSellPriceSelector, fumSupplySelector, metamaskSelector, metamaskSignerSelector, metamaskUSMSelector } from './redux/selectors';
+import { Button, Card, Table } from 'react-bootstrap';
 import { decimalPlaces, stringMul } from './utils';
+import { buyFUM, loadMetamask, sellFUM } from './redux/interactions';
+import { setInputAmount } from './redux/actions';
+import { fum } from './tokens';
+
+function printButtons(metamaskConnected, buy, sell, connect, inputChange) {
+  if (metamaskConnected) {
+    return (
+      <>
+        <Button onClick={sell} variant="warning" size="sm" className="float-right ml-1">Burn (FUM)</Button>
+        <Button onClick={buy} variant="success" size="sm" className="float-right ml-1">Mint (ETH)</Button>
+        <input className="form-control" style={{width: 100}} onChange={inputChange} placeholder="Amount" type="number" size="sm" className="float-right ml-1"></input>
+      </>
+    )
+  }
+  else {
+    return (<Button onClick={connect} variant="success" size="sm" className="float-right ml-1">Connect</Button>)
+  }
+}
 
 class FUMCard extends Component {
   render() {
     const {
-      fumMarketCap, fumMarketCapUSD, fumSupply, fumMints, fumBurns,
-      fumBuyPrice, fumBuyPriceUSD, fumSellPrice, fumSellPriceUSD
+      dispatch, fumMarketCap, fumMarketCapUSD, fumSupply, fumMints, fumBurns,
+      fumBuyPrice, fumBuyPriceUSD, fumSellPrice, fumSellPriceUSD,
+      metamaskSigner, metamaskConnected, metamaskUSM, inputAmount
     } = this.props
+
+    const connectMetamask = (e) => {
+      loadMetamask(dispatch)
+    }
+
+    const buyFum = (e) => {
+      buyFUM(dispatch, metamaskUSM, metamaskSigner, inputAmount)
+    }
+
+    const setAmount = (e) => {
+      dispatch(setInputAmount(fum.name, e.target.value))
+    }
+
+    const sellFum = (e) => {
+      sellFUM(dispatch, metamaskUSM, metamaskSigner, inputAmount)
+    }
 
     return (
       <Card>
         <Card.Header as="h5">
-          FUM Stats
+          FUM
+          {printButtons(metamaskConnected, buyFum, sellFum, connectMetamask, setAmount)}
         </Card.Header>
         <Card.Body>
           <Table striped hover size="sm">
@@ -69,7 +105,10 @@ function mapStateToProps(state) {
   const fumSellPriceUSD = stringMul(fumSellPrice, coingeckoPrice)
   const fumMarketCapUSD = stringMul(fumMarketCap, coingeckoPrice)
 
+  const metamask = metamaskSelector(state)
+  const metamaskConnected = (metamask != null);
   return {
+    inputAmount: fumInputAmountSelector(state),
     fumMarketCap,
     fumMarketCapUSD,
     fumSupply,
@@ -80,6 +119,9 @@ function mapStateToProps(state) {
     fumSellPrice,
     fumSellPriceUSD,
     coingeckoPrice,
+    metamaskConnected,
+    metamaskSigner: metamaskSignerSelector(state),
+    metamaskUSM: metamaskUSMSelector(state)
   }
 }
 

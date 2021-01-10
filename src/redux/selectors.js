@@ -26,6 +26,9 @@ export const metamaskFUMSelector = createSelector(metamaskFUM, w => w);
 const usmInputAmount = state => get(state, 'app.usmInputAmount', null);
 export const usmInputAmountSelector = createSelector(usmInputAmount, w => w);
 
+const fumInputAmount = state => get(state, 'app.fumInputAmount', null);
+export const fumInputAmountSelector = createSelector(fumInputAmount, w => w);
+
 //USM
 const usmSupply = state => get(state, 'usm.supply', 0);
 export const usmSupplySelector = createSelector(usmSupply, w => w);

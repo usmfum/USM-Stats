@@ -20,6 +20,8 @@ function app(state = {}, action) {
       return { ...state, metamaskError: action.error }
     case 'SET_USM_INPUT_AMOUNT':
       return { ...state, usmInputAmount: action.amount }
+    case 'SET_FUM_INPUT_AMOUNT':
+      return { ...state, fumInputAmount: action.amount }
     default:
       return state;
   }

@@ -57,7 +57,7 @@ export const loadMetamask = async (dispatch) => {
 export const buyUSM = async (dispatch, usm, signer, amount) => {
   const weiAmount = ethers.utils.parseEther(amount)
   const address = await signer.getAddress()
-  usm.mint(address, weiAmount, {value: weiAmount})
+  usm.mint(address, 0, {value: weiAmount})
     .then(() => console.log("minting USM"))
     .catch((error) => console.log("error", error))
 }
@@ -70,3 +70,19 @@ export const sellUSM = async (dispatch, usm, signer, amount) => {
     .catch((error) => console.log("error", error))
 }
 
+export const buyFUM = async (dispatch, usm, signer, amount) => {
+  console.log(usm, signer, amount)
+  const weiAmount = ethers.utils.parseEther(amount)
+  const address = await signer.getAddress()
+  usm.fund(address, 0, {value: weiAmount})
+    .then(() => console.log("minting FUM"))
+    .catch((error) => console.log("error", error))
+}
+
+export const sellFUM = async (dispatch, usm, signer, amount) => {
+  const weiAmount = ethers.utils.parseEther(amount)
+  const address = await signer.getAddress()
+  usm.defund(address, address, weiAmount, 0)
+    .then(() => console.log("burning FUM"))
+    .catch((error) => console.log("error", error))
+}
