@@ -64,7 +64,7 @@ export const buyUSM = async (dispatch, usm, signer, amount) => {
   const address = await signer.getAddress()
   usm.mint(address, 0, {value: weiAmount})
     .then(() => console.log("minting USM"))
-    .catch((error) => console.log("error", error))
+    .catch((error) => dispatch(metamaskError(error)))
 }
 
 export const sellUSM = async (dispatch, usm, signer, amount) => {
@@ -72,7 +72,7 @@ export const sellUSM = async (dispatch, usm, signer, amount) => {
   const address = await signer.getAddress()
   usm.burn(address, address, weiAmount, 0)
     .then(() => console.log("burning USM"))
-    .catch((error) => console.log("error", error))
+    .catch((error) => dispatch(metamaskError(error)))
 }
 
 export const buyFUM = async (dispatch, usm, signer, amount) => {
@@ -81,7 +81,7 @@ export const buyFUM = async (dispatch, usm, signer, amount) => {
   const address = await signer.getAddress()
   usm.fund(address, 0, {value: weiAmount})
     .then(() => console.log("minting FUM"))
-    .catch((error) => console.log("error", error))
+    .catch((error) => dispatch(metamaskError(error)))
 }
 
 export const sellFUM = async (dispatch, usm, signer, amount) => {
@@ -89,5 +89,5 @@ export const sellFUM = async (dispatch, usm, signer, amount) => {
   const address = await signer.getAddress()
   usm.defund(address, address, weiAmount, 0)
     .then(() => console.log("burning FUM"))
-    .catch((error) => console.log("error", error))
+    .catch((error) => dispatch(metamaskError(error)))
 }

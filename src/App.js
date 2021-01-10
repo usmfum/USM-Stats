@@ -8,6 +8,7 @@ import HealthCard from './HealthCard';
 import OracleCard from './OracleCard';
 import USMCard from './USMCard';
 import FUMCard from './FUMCard';
+import { clearMetamaskError } from './redux/actions';
 
 class App extends Component {
 
@@ -21,6 +22,7 @@ class App extends Component {
 
     if (metamaskError) {
       alert(metamaskError.toString())
+      dispatch(clearMetamaskError())
     }
 
     return (

@@ -36,6 +36,12 @@ export function metamaskError(error) {
   }
 }
 
+export function clearMetamaskError() {
+  return {
+    type: 'CLEAR_METAMASK_ERROR'
+  }
+}
+
 export function networkLoaded(provider){
   return {
     type: 'NETWORK_LOADED',

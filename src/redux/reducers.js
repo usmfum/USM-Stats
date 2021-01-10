@@ -18,6 +18,8 @@ function app(state = {}, action) {
       }
     case 'METAMASK_ERROR':
       return { ...state, metamaskError: action.error }
+    case 'CLEAR_METAMASK_ERROR':
+      return { ...state, metamaskError: null }
     case 'SET_USM_INPUT_AMOUNT':
       return { ...state, usmInputAmount: action.amount }
     case 'SET_FUM_INPUT_AMOUNT':
