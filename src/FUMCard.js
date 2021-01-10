@@ -13,10 +13,10 @@ class FUMCard extends Component {
 
     return (
       <Card>
+        <Card.Header as="h5">
+          FUM Stats
+        </Card.Header>
         <Card.Body>
-          <Card.Title>
-            FUM Stats
-          </Card.Title>
           <Table striped hover size="sm">
             <tbody>
               <tr>

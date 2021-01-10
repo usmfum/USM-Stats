@@ -42,7 +42,6 @@ class App extends Component {
             <Col sm="12" md="6">
               <FUMCard />
             </Col>
-            
           </Row>
         </Container>
       </div>

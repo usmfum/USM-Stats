@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { coingeckoPriceSelector, usmCollateralSelector, usmDebtRatioSelector, usmEthBufferSelector } from './redux/selectors';
-import { Card, Table } from 'react-bootstrap';
+import { Button, Card, Table } from 'react-bootstrap';
 import { debtRatioHighlight, decimalPlaces, toPercentage } from './utils';
 
 class HealthCard extends Component {
@@ -11,10 +11,10 @@ class HealthCard extends Component {
 
     return (
       <Card>
+        <Card.Header as="h5">
+          Protocol Health
+        </Card.Header>
         <Card.Body>
-          <Card.Title>
-            Protocol Health
-          </Card.Title>
           <Table striped hover size="sm">
             <tbody>
               <tr>

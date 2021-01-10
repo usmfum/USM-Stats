@@ -19,6 +19,8 @@ export const usm = {
     "function latestCompoundPrice() public view returns (uint price)",
     "function latestUniswapTWAPPrice() public view returns (uint price)",
     "function latestPrice() public virtual view returns (uint price)",
+
+    "function receive() external payable",
     
     "event MinFumBuyPriceChanged(uint previous, uint latest)",
     "event BuySellAdjustmentChanged(uint previous, uint latest)",
@@ -32,7 +34,8 @@ export const usm = {
     "event Transfer(address indexed from, address indexed to, uint256 value)",
   ],
   address: {
-    '1': '0x03eb7Ce2907e202bB70BAE3D7B0C588573d3cECC'
+    1: '0x03eb7Ce2907e202bB70BAE3D7B0C588573d3cECC',
+    42: '0x21453979384f21D09534f8801467BDd5d90eCD6C'
   }
 }
 
@@ -43,6 +46,7 @@ export const fum = {
     "event Transfer(address indexed from, address indexed to, uint256 value)"
   ],
   address: {
-    '1': '0xf04a5D82ff8a801f7d45e9C14CDcf73defF1a394'
+    1: '0xf04a5D82ff8a801f7d45e9C14CDcf73defF1a394',
+    42: '0x96F8F5323Aa6CB0e6F311bdE6DEEFb1c81Cb1898'
   }
 }
