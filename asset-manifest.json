@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/USM-Stats/static/css/main.ab877087.chunk.css",
-    "main.js": "/USM-Stats/static/js/main.037ab77d.chunk.js",
-    "main.js.map": "/USM-Stats/static/js/main.037ab77d.chunk.js.map",
+    "main.js": "/USM-Stats/static/js/main.55a2c24e.chunk.js",
+    "main.js.map": "/USM-Stats/static/js/main.55a2c24e.chunk.js.map",
     "runtime-main.js": "/USM-Stats/static/js/runtime-main.ba853704.js",
     "runtime-main.js.map": "/USM-Stats/static/js/runtime-main.ba853704.js.map",
     "static/js/2.ef81ae72.chunk.js": "/USM-Stats/static/js/2.ef81ae72.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.ba853704.js",
     "static/js/2.ef81ae72.chunk.js",
     "static/css/main.ab877087.chunk.css",
-    "static/js/main.037ab77d.chunk.js"
+    "static/js/main.55a2c24e.chunk.js"
   ]
 }
