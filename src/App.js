@@ -22,10 +22,10 @@ class App extends Component {
     return (
       <div className="App">
         <Container>
-          <Alert variant="warning">
+          <Alert variant="success">
             <b>Displaying live data for <a href="https://twitter.com/usmfum/status/1339323408618835969" target="_blank" rel="noreferrer">Baby-USM.</a></b>
-            This is a temporary "live" protocol used for research purposes. On the 15th of January 2021, the Baby-USM protocol will become withdraw-only and read-only.
-            The data from this trial run will be analysed in the run up to the full release of USM.
+            This is a temporary "live" protocol used for research purposes. Baby-USM protocol is now withdraw-only and read-only.
+            Minting Baby-USM or Baby-FUM is now permanently disabled. Thanks to everyone who took part!
           </Alert>
           <Row>
             <Col sm="12" md="6">
