@@ -2,21 +2,27 @@ import './App.scss';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadNetwork } from './redux/interactions';
-import { networkProviderSelector } from './redux/selectors';
+import { metamaskErrorSelector, networkProviderSelector } from './redux/selectors';
 import { Col, Container, Row, Alert } from 'react-bootstrap';
 import HealthCard from './HealthCard';
 import OracleCard from './OracleCard';
 import USMCard from './USMCard';
 import FUMCard from './FUMCard';
+import { clearMetamaskError } from './redux/actions';
 
 class App extends Component {
 
   render() {
 
-    const {dispatch, networkProvider } = this.props;
+    const {dispatch, networkProvider, metamaskError } = this.props;
 
     if (!networkProvider) {
       loadNetwork(dispatch);
+    }
+
+    if (metamaskError) {
+      alert(metamaskError.toString())
+      dispatch(clearMetamaskError())
     }
 
     return (
@@ -42,7 +48,6 @@ class App extends Component {
             <Col sm="12" md="6">
               <FUMCard />
             </Col>
-            
           </Row>
         </Container>
       </div>
@@ -53,7 +58,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    networkProvider: networkProviderSelector(state)
+    networkProvider: networkProviderSelector(state),
+    metamaskError: metamaskErrorSelector(state)
   }
 }
 

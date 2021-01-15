@@ -8,6 +8,22 @@ function app(state = {}, action) {
       return { ...state, usm: action.usm }
     case 'FUM_LOADED':
       return { ...state, fum: action.fum }
+    case 'METAMASK_LOADED':
+      return { 
+        ...state,
+        metamask: action.metamask,
+        metamaskSigner: action.signer,
+        metamaskUSM: action.usm,
+        metamaskFUM: action.fum
+      }
+    case 'METAMASK_ERROR':
+      return { ...state, metamaskError: action.error }
+    case 'CLEAR_METAMASK_ERROR':
+      return { ...state, metamaskError: null }
+    case 'SET_USM_INPUT_AMOUNT':
+      return { ...state, usmInputAmount: action.amount }
+    case 'SET_FUM_INPUT_AMOUNT':
+      return { ...state, fumInputAmount: action.amount }
     default:
       return state;
   }

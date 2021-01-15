@@ -1,6 +1,47 @@
 import { chainlink, coingecko, compound, median, uniswap } from "../oracles";
 import { fum, usm } from "../tokens";
 
+export function setInputAmount(token, amount) {
+  switch (token) {
+    case usm.name:
+      return {
+        type: 'SET_USM_INPUT_AMOUNT',
+        amount
+      }
+    case fum.name:
+      return {
+        type: 'SET_FUM_INPUT_AMOUNT',
+        amount
+      }
+    default:
+      break;
+  }
+  
+}
+
+export function metamaskLoaded(metamask, signer, usm, fum) {
+  return {
+    type: 'METAMASK_LOADED',
+    metamask,
+    signer,
+    usm,
+    fum
+  }
+}
+
+export function metamaskError(error) {
+  return {
+    type: 'METAMASK_ERROR',
+    error
+  }
+}
+
+export function clearMetamaskError() {
+  return {
+    type: 'CLEAR_METAMASK_ERROR'
+  }
+}
+
 export function networkLoaded(provider){
   return {
     type: 'NETWORK_LOADED',

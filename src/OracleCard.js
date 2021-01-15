@@ -11,10 +11,11 @@ class OracleCard extends Component {
 
     return (
       <Card>
+        <Card.Header as="h5">
+          Oracle Performance
+        </Card.Header>
         <Card.Body>
-          <Card.Title>
-            Oracle Performance
-          </Card.Title>
+          
           <Table striped hover size="sm">
             <tbody>
               <tr>
