@@ -34,7 +34,7 @@ export const usm = {
     "event Transfer(address indexed from, address indexed to, uint256 value)",
   ],
   address: {
-    1: '0x03eb7Ce2907e202bB70BAE3D7B0C588573d3cECC',
+    1: '0x2a7fff44c19f39468064ab5e5c304de01d591675',
     42: '0x21453979384f21D09534f8801467BDd5d90eCD6C'
   }
 }
@@ -46,7 +46,7 @@ export const fum = {
     "event Transfer(address indexed from, address indexed to, uint256 value)"
   ],
   address: {
-    1: '0xf04a5D82ff8a801f7d45e9C14CDcf73defF1a394',
+    1: '0x86729873e3b88de2ab85ca292d6d6d69d548edf3',
     42: '0x96F8F5323Aa6CB0e6F311bdE6DEEFb1c81Cb1898'
   }
 }
