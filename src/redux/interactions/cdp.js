@@ -1,12 +1,12 @@
 import { ethers } from "ethers"
 import { setCollateral, setDebtRatio, setEthBuffer, setFUMPrice, setUSMPrice } from "../actions"
 
-export const loadCollateralData = async (dispatch, contract) => {
-  getCollateral(dispatch, contract)
-  getDebtRatio(dispatch, contract)
-  getEthBuffer(dispatch, contract)
-  getUSMPrice(dispatch, contract)
-  getFUMPrice(dispatch, contract)
+export const loadCollateralData = async (dispatch, usmContract, usmViewContract) => {
+  getCollateral(dispatch, usmContract)
+  getDebtRatio(dispatch, usmViewContract)
+  getEthBuffer(dispatch, usmViewContract)
+  getUSMPrice(dispatch, usmViewContract)
+  getFUMPrice(dispatch, usmViewContract)
 }
 
 export const getCollateral = async (dispatch, contract) => {

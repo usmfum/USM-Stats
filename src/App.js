@@ -29,8 +29,8 @@ class App extends Component {
       <div className="App">
         <Container>
           <Alert variant="success">
-            <b><a href="https://twitter.com/usmfum/status/1339323408618835969" target="_blank" rel="noreferrer">Baby-USM</a> protocol is now withdraw-only and read-only.</b>
-            Minting Baby-USM or Baby-FUM is now permanently disabled. Thanks to everyone who took part!
+            <b><a href="https://twitter.com/usmfum/status/1447437647727763456" target="_blank" rel="noreferrer">USM v1-rc1</a> is now live on mainnet!</b>
+            But please exercise caution, this is still a fresh release, not yet battle-tested.
           </Alert>
           <Row>
             <Col sm="12" md="6">

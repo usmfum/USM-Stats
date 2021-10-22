@@ -69,10 +69,10 @@ function oracle(state = {}, action) {
   switch (action.type) {
     case 'ORACLE_PRICE_CHAINLINK':
       return { ...state, chainlinkPrice: action.price }
-    case 'ORACLE_PRICE_COMPOUND':
-      return { ...state, compoundPrice: action.price }
-    case 'ORACLE_PRICE_UNISWAP':
-      return { ...state, uniswapPrice: action.price }
+    case 'ORACLE_PRICE_UNISWAP_ETH_USDC':
+      return { ...state, uniswapEthUsdcPrice: action.price }
+    case 'ORACLE_PRICE_UNISWAP_ETH_USDT':
+      return { ...state, uniswapEthUsdtPrice: action.price }
     case 'ORACLE_PRICE_COINGECKO':
       return { ...state, coingeckoPrice: action.price }
     case 'ORACLE_PRICE_MEDIAN':

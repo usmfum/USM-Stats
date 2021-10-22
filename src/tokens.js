@@ -1,29 +1,29 @@
 export const usm = {
   name: 'usm',
   abi: [
-    "function mint(address to, uint minUsmOut) external payable returns (uint)",
-    "function burn(address from, address payable to, uint usmToBurn, uint minEthOut) external returns (uint)",
-    "function fund(address to, uint minFumOut) external payable returns (uint)",
-    "function defund(address from, address payable to, uint fumToBurn, uint minEthOut) external returns (uint)",
-    "function defundFromFUM(address from, address payable to, uint fumToBurn, uint minEthOut) external returns (uint)",
-    "function ethPool() public view returns (uint pool)",
-    "function minFumBuyPrice() public view returns (uint mfbp)",
-    "function buySellAdjustment() public view returns (uint adjustment)",
-    "function ethBuffer(uint8 upOrDown) external view returns (int buffer)",
-    "function ethToUsm(uint ethAmount, uint8 upOrDown) external view returns (uint usmOut)",
-    "function usmToEth(uint usmAmount, uint8 upOrDown) external view returns (uint ethOut)",
-    "function debtRatio() external view returns (uint ratio)",
-    "function usmPrice(uint8 side) external view returns (uint price)",
-    "function fumPrice(uint8 side) external view returns (uint price)",
-    "function latestChainlinkPrice() public view returns (uint price)",
-    "function latestCompoundPrice() public view returns (uint price)",
-    "function latestUniswapTWAPPrice() public view returns (uint price)",
+    "function mint(address to, uint minUsmOut) external payable returns (uint usmOut)",
+    "function burn(address payable to, uint usmToBurn, uint minEthOut) external returns (uint ethOut)",
+    "function fund(address to, uint minFumOut) external payable returns (uint fumOut)",
+    "function defund(address payable to, uint fumToBurn, uint minEthOut) external onlyAfterPrefund returns (uint ethOut)",
+    "function defundFrom(address from, address payable to, uint fumToBurn, uint minEthOut) external onlyAfterPrefund returns (uint ethOut)",
     "function latestPrice() public virtual view returns (uint price)",
+    //"function checkForFreshOraclePrice(LoadedState memory ls) public view returns (uint price, uint oraclePrice, uint adjustment)",
+    "function ethPool() public view returns (uint pool)",
+    //"function fumTotalSupply() public view returns (uint supply)",
+    "function bidAskAdjustment() public view returns (uint adjustment)",
+    "function timeSystemWentUnderwater() public view returns (uint timestamp)",
+    "function isDuringPrefund() public view returns (bool duringPrefund)",
+    //"function adjustedEthUsdPrice(IUSM.Side side, uint ethUsdPrice, uint adjustment) public pure returns (uint price)",
+    //"function usmFromMint(LoadedState memory ls, uint ethIn) public pure returns (uint usmOut, uint adjShrinkFactor)",
+    //"function ethFromBurn(LoadedState memory ls, uint usmIn) public pure returns (uint ethOut, uint adjGrowthFactor)",
+    //"function fumFromFund(LoadedState memory ls, uint fumSupply, uint ethIn, uint debtRatio_, bool prefund) public pure returns (uint fumOut, uint adjGrowthFactor)",
+    //"function ethFromDefund(LoadedState memory ls, uint fumSupply, uint fumIn) public pure returns (uint ethOut, uint adjShrinkFactor)",
 
     "function receive() external payable",
-    
-    "event MinFumBuyPriceChanged(uint previous, uint latest)",
-    "event BuySellAdjustmentChanged(uint previous, uint latest)",
+
+    "event UnderwaterStatusChanged(bool underwater)",
+    "event BidAskAdjustmentChanged(uint adjustment)",
+    "event PriceChanged(uint price, uint oraclePrice)",
   
     "function totalSupply() external view returns (uint256)",
     "function balanceOf(address account) external view returns (uint256)",
@@ -34,7 +34,7 @@ export const usm = {
     "event Transfer(address indexed from, address indexed to, uint256 value)",
   ],
   address: {
-    1: '0x2a7fff44c19f39468064ab5e5c304de01d591675',
+    1: '0x2a7FFf44C19f39468064ab5e5c304De01D591675',
     42: '0x21453979384f21D09534f8801467BDd5d90eCD6C'
   }
 }
@@ -46,7 +46,24 @@ export const fum = {
     "event Transfer(address indexed from, address indexed to, uint256 value)"
   ],
   address: {
-    1: '0x86729873e3b88de2ab85ca292d6d6d69d548edf3',
+    1: '0x86729873e3b88DE2Ab85CA292D6d6D69D548eDF3',
     42: '0x96F8F5323Aa6CB0e6F311bdE6DEEFb1c81Cb1898'
+  }
+}
+
+export const usmView = {
+  name: 'usmView',
+  abi: [
+    "function ethBuffer(bool roundUp) external view returns (int buffer)",
+    "function ethToUsm(uint ethAmount, bool roundUp) external view returns (uint usmOut)",
+    "function usmToEth(uint usmAmount, bool roundUp) external view returns (uint ethOut)",
+    "function debtRatio() external view returns (uint ratio)",
+    "function usmPrice(uint8 side) external view returns (uint price)",
+    "function fumPrice(uint8 side) external view returns (uint price)",
+    "function fumPrice(uint8 side, bool prefund) public view returns (uint price)",
+  ],
+  address: {
+    1: '0x0aEbFe42154dEaE7e35AFA9727469e7F4a192b9d',
+    42: ''
   }
 }
