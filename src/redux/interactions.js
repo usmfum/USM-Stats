@@ -1,5 +1,5 @@
 import { ethers } from "ethers"
-import { fum, usm } from "../tokens"
+import { fum, usm, usmView } from "../tokens"
 import { fumLoaded, metamaskError, metamaskLoaded, networkLoaded, usmLoaded } from "./actions"
 import { loadCollateralData } from "./interactions/cdp"
 import { loadERC20Data } from "./interactions/erc20"
@@ -14,12 +14,15 @@ export const loadNetwork = async (dispatch) => {
 
 export const loadUSM = async (dispatch, provider) => {
   const network = await provider.getNetwork()
-  const abi = usm.abi
-  const address = usm.address[network.chainId]
-  const usmContract = new ethers.Contract(address, abi, provider)
+  const usmAbi = usm.abi
+  const usmAddress = usm.address[network.chainId]
+  const usmContract = new ethers.Contract(usmAddress, usmAbi, provider)
+  const usmViewAbi = usmView.abi
+  const usmViewAddress = usmView.address[network.chainId]
+  const usmViewContract = new ethers.Contract(usmViewAddress, usmViewAbi, provider)
   dispatch(usmLoaded(usmContract))
   loadERC20Data(dispatch, usm, usmContract)
-  loadCollateralData(dispatch, usmContract)
+  loadCollateralData(dispatch, usmContract, usmViewContract)
   loadOracleData(dispatch, usmContract)
 }
 

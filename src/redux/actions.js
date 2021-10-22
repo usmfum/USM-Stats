@@ -1,5 +1,5 @@
-import { chainlink, coingecko, compound, median, uniswap } from "../oracles";
-import { fum, usm } from "../tokens";
+import { chainlink, coingecko, median, uniswapEthUsdc, uniswapEthUsdt } from "../oracles";
+import { fum, usm, usmView } from "../tokens";
 
 export function setInputAmount(token, amount) {
   switch (token) {
@@ -70,14 +70,14 @@ export function setLatestOraclePrice(source, price) {
         type: 'ORACLE_PRICE_CHAINLINK',
         price
       }
-    case compound:
+    case uniswapEthUsdc:
       return {
-        type: 'ORACLE_PRICE_COMPOUND',
+        type: 'ORACLE_PRICE_UNISWAP_ETH_USDC',
         price
       }
-    case uniswap:
+    case uniswapEthUsdt:
       return {
-        type: 'ORACLE_PRICE_UNISWAP',
+        type: 'ORACLE_PRICE_UNISWAP_ETH_USDT',
         price
       }
     case coingecko:

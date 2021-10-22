@@ -74,11 +74,11 @@ export const fumSellPriceSelector = createSelector(fumSellPrice, w => w);
 const chainlinkPrice = state => get(state, 'oracle.chainlinkPrice', 0);
 export const chainlinkPriceSelector = createSelector(chainlinkPrice, w => w);
 
-const compoundPrice = state => get(state, 'oracle.compoundPrice', 0);
-export const compoundPriceSelector = createSelector(compoundPrice, w => w);
+const uniswapEthUsdcPrice = state => get(state, 'oracle.uniswapEthUsdcPrice', 0);
+export const uniswapEthUsdcPriceSelector = createSelector(uniswapEthUsdcPrice, w => w);
 
-const uniswapPrice = state => get(state, 'oracle.uniswapPrice', 0);
-export const uniswapPriceSelector = createSelector(uniswapPrice, w => w);
+const uniswapEthUsdtPrice = state => get(state, 'oracle.uniswapEthUsdtPrice', 0);
+export const uniswapEthUsdtPriceSelector = createSelector(uniswapEthUsdtPrice, w => w);
 
 const coingeckoPrice = state => get(state, 'oracle.coingeckoPrice', 0);
 export const coingeckoPriceSelector = createSelector(coingeckoPrice, w => w);
