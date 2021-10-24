@@ -1,25 +1,27 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { coingeckoPriceSelector, fumBurnsSelector, fumBuyPriceSelector, fumInputAmountSelector, fumMintsSelector, fumSellPriceSelector, fumSupplySelector, metamaskSelector, metamaskSignerSelector, metamaskUSMSelector } from './redux/selectors';
-import { Button, Card, Table } from 'react-bootstrap';
+import { Card, Table } from 'react-bootstrap';
 import { decimalPlaces, stringMul } from './utils';
 import { buyFUM, loadMetamask, sellFUM } from './redux/interactions';
 import { setInputAmount } from './redux/actions';
 import { fum } from './tokens';
 
 function printButtons(metamaskConnected, buy, sell, connect, inputChange) {
-  if (metamaskConnected) {
-    return (
-      <>
-        <Button onClick={sell} variant="warning" size="sm" className="float-right ml-1">Burn (FUM)</Button>
-        <Button onClick={buy} variant="success" size="sm" className="float-right ml-1">Mint (ETH)</Button>
-        <input className="form-control" style={{width: 100}} onChange={inputChange} placeholder="Amount" type="number" size="sm" className="float-right ml-1"></input>
-      </>
-    )
-  }
-  else {
-    return (<Button onClick={connect} variant="success" size="sm" className="float-right ml-1">Connect</Button>)
-  }
+  // Removed until fixed
+
+  // if (metamaskConnected) {
+  //   return (
+  //     <>
+  //       <Button onClick={sell} variant="warning" size="sm" className="float-right ml-1">Burn (FUM)</Button>
+  //       <Button onClick={buy} variant="success" size="sm" className="float-right ml-1">Mint (ETH)</Button>
+  //       <input className="form-control" style={{width: 100}} onChange={inputChange} placeholder="Amount" type="number" size="sm" className="float-right ml-1"></input>
+  //     </>
+  //   )
+  // }
+  // else {
+  //   return (<Button onClick={connect} variant="success" size="sm" className="float-right ml-1">Connect</Button>)
+  // }
 }
 
 class FUMCard extends Component {

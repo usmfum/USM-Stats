@@ -1,25 +1,27 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { coingeckoPriceSelector, metamaskSelector, usmInputAmountSelector, metamaskSignerSelector, metamaskUSMSelector, usmBurnsSelector, usmBuyPriceSelector, usmMintsSelector, usmSellPriceSelector, usmSupplySelector } from './redux/selectors';
-import { Button, Card, Table } from 'react-bootstrap';
+import { Card, Table } from 'react-bootstrap';
 import { decimalPlaces, stringMul, usmPriceHighlight } from './utils';
 import { buyUSM, loadMetamask, sellUSM } from './redux/interactions';
 import { setInputAmount } from './redux/actions';
 import { usm } from './tokens';
 
 function printButtons(metamaskConnected, buy, sell, connect, inputChange) {
-  if (metamaskConnected) {
-    return (
-      <>
-        <Button onClick={sell} variant="warning" size="sm" className="float-right ml-1">Burn (USM)</Button>
-        <Button onClick={buy} variant="success" size="sm" className="float-right ml-1">Mint (ETH)</Button>
-        <input className="form-control" style={{width: 100}} onChange={inputChange} placeholder="Amount" type="number" size="sm" className="float-right ml-1"></input>
-      </>
-    )
-  }
-  else {
-    return (<Button onClick={connect} variant="success" size="sm" className="float-right ml-1">Connect</Button>)
-  }
+  // Removed until fixed
+
+  // if (metamaskConnected) {
+  //   return (
+  //     <>
+  //       <Button onClick={sell} variant="warning" size="sm" className="float-right ml-1">Burn (USM)</Button>
+  //       <Button onClick={buy} variant="success" size="sm" className="float-right ml-1">Mint (ETH)</Button>
+  //       <input className="form-control" style={{width: 100}} onChange={inputChange} placeholder="Amount" type="number" size="sm" className="float-right ml-1"></input>
+  //     </>
+  //   )
+  // }
+  // else {
+  //   return (<Button onClick={connect} variant="success" size="sm" className="float-right ml-1">Connect</Button>)
+  // }
 }
 
 class USMCard extends Component {

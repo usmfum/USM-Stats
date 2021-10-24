@@ -23,7 +23,7 @@ export const loadUSM = async (dispatch, provider) => {
   dispatch(usmLoaded(usmContract))
   loadERC20Data(dispatch, usm, usmContract)
   loadCollateralData(dispatch, usmContract, usmViewContract)
-  loadOracleData(dispatch, usmContract)
+  loadOracleData(dispatch, provider)
 }
 
 export const loadFUM = async (dispatch, provider) => {

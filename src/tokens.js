@@ -7,17 +7,11 @@ export const usm = {
     "function defund(address payable to, uint fumToBurn, uint minEthOut) external onlyAfterPrefund returns (uint ethOut)",
     "function defundFrom(address from, address payable to, uint fumToBurn, uint minEthOut) external onlyAfterPrefund returns (uint ethOut)",
     "function latestPrice() public virtual view returns (uint price)",
-    //"function checkForFreshOraclePrice(LoadedState memory ls) public view returns (uint price, uint oraclePrice, uint adjustment)",
     "function ethPool() public view returns (uint pool)",
-    //"function fumTotalSupply() public view returns (uint supply)",
+    // "function fumTotalSupply() public view returns (uint supply)",
     "function bidAskAdjustment() public view returns (uint adjustment)",
     "function timeSystemWentUnderwater() public view returns (uint timestamp)",
     "function isDuringPrefund() public view returns (bool duringPrefund)",
-    //"function adjustedEthUsdPrice(IUSM.Side side, uint ethUsdPrice, uint adjustment) public pure returns (uint price)",
-    //"function usmFromMint(LoadedState memory ls, uint ethIn) public pure returns (uint usmOut, uint adjShrinkFactor)",
-    //"function ethFromBurn(LoadedState memory ls, uint usmIn) public pure returns (uint ethOut, uint adjGrowthFactor)",
-    //"function fumFromFund(LoadedState memory ls, uint fumSupply, uint ethIn, uint debtRatio_, bool prefund) public pure returns (uint fumOut, uint adjGrowthFactor)",
-    //"function ethFromDefund(LoadedState memory ls, uint fumSupply, uint fumIn) public pure returns (uint ethOut, uint adjShrinkFactor)",
 
     "function receive() external payable",
 
@@ -60,10 +54,22 @@ export const usmView = {
     "function debtRatio() external view returns (uint ratio)",
     "function usmPrice(uint8 side) external view returns (uint price)",
     "function fumPrice(uint8 side) external view returns (uint price)",
-    "function fumPrice(uint8 side, bool prefund) public view returns (uint price)",
   ],
   address: {
     1: '0x0aEbFe42154dEaE7e35AFA9727469e7F4a192b9d',
     42: ''
+  }
+}
+
+export const oracle = {
+  name: 'oracle',
+  abi: [
+    "function latestChainlinkPrice() public view returns (uint price)",
+    "function latestUniswapV3TWAPPrice1() public view returns (uint price)",
+    "function latestUniswapV3TWAPPrice2() public view returns (uint price)",
+    "function latestPrice() public virtual view returns (uint price)"
+  ],
+  address: {
+    1: "0x7F360C88CABdcC2F2874Ec4Eb05c3D47bD0726C5",
   }
 }
